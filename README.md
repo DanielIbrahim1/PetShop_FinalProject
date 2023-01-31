@@ -19,7 +19,7 @@ The owner of the store can manage the store by adding/removing/updating/showing 
 # How to run the project :
 To get this project up and running you should start by having Python installed on your computer, and then install the porject in your pc with :
 ```
-Git clone https://github.com/DanielIbrahim1/Final_project.git
+Git clone https://github.com/DanielIbrahim1/PetShop_FinalProject.git
 ```
 First of all be sure your in the correct folder by cd to Backend.
  Then advised you create a virtual environment to store your projects dependencies separately.
