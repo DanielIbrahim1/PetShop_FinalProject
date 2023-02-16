@@ -17,7 +17,7 @@ urlpatterns = [
     path('getprofile/', authenticationViews.getProfile, name='getprofile'),
     path('getprofile/<id>/', authenticationViews.getProfile, name='getprofile'),
 
-    path('getoneuser/<id>/', authenticationViews.getOneUser, name='getoneuser'),
+    path('getoneuser/<id>', authenticationViews.getOneUser, name='getoneuser'),
 
 
     path('logout/', authenticationViews.logOut, name='logout'),  # works
