@@ -74,8 +74,8 @@ const Profile = () => {
     <div >
       <form className="profile-form" >
         {userList.map((user) =>
-          <div key={user._id}>
-            {user._id  && (
+          <div key={user.id}>
+            {user.id  && (
               <div >
                 <div className="form-group mb-2">
                   <label >Username </label>
