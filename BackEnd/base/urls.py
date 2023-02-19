@@ -12,10 +12,10 @@ urlpatterns = [
          name='token_refresh'),
 
     path('getuser/', authenticationViews.getUsers, name='getuser'),
-    path('getuser/<id>/', authenticationViews.getUsers, name='getuser'),
+    path('getuser/<id>', authenticationViews.getUsers, name='getuser'),
 
     path('getprofile/', authenticationViews.getProfile, name='getprofile'),
-    path('getprofile/<id>/', authenticationViews.getProfile, name='getprofile'),
+    path('getprofile/<id>', authenticationViews.getProfile, name='getprofile'),
 
     path('getoneuser/<id>', authenticationViews.getOneUser, name='getoneuser'),
 
@@ -57,12 +57,12 @@ urlpatterns = [
 
     path('getproduct/<category_id>/',
          productViews.get_products, name="getproduct"),  # works
-     
-     # path('getproductper/',
-     #     productViews.getProductsPerCategoty, name="getproductpercategory"),
-     path('getproductper/<cat_id>',
+
+    # path('getproductper/',
+    #     productViews.getProductsPerCategoty, name="getproductpercategory"),
+    path('getproductper/<cat_id>',
          productViews.getProductsPerCategoty, name="getproductpercategory"),
-    
+
     path('getproduct/<product_id>',
          productViews.get_one_products, name="getproduct"),  # works
 

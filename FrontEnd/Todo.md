@@ -27,3 +27,8 @@ template
 https://therichpost.com/reactjs-organic-ecommerce-template-free/
 
 get all users for admin -- done
+
+- fix login link
+- fix registering with wrong details
+- fix profile breaking after refresh
+- fix admin
