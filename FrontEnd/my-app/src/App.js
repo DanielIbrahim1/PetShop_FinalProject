@@ -22,14 +22,12 @@ function App() {
     }
   }, []);
   return (
-    <div >
-      
-        <Header></Header>
-        <div>
+    <div>
+      <Header></Header>
+      <div>
         <Outlet></Outlet>
-        </div>
-        <Footer></Footer>
-     
+      </div>
+      <Footer></Footer>
     </div>
   );
 }

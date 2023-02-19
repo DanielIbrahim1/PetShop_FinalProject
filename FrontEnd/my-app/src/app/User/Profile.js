@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import {
   selectUserName,
@@ -17,7 +18,6 @@ import {
 } from "../Authentication/authenticationSlice";
 import { updateUserAsync, getUsersAsync, selectUserList } from "./userSlice";
 import { useParams } from "react-router-dom";
-
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -71,106 +71,166 @@ const Profile = () => {
   };
 
   return (
-    <div >
-      <form className="profile-form" >
-        {userList.map((user) =>
+    <div>
+      <form className="profile-form">
+        {userList.map((user) => (
           <div key={user.id}>
-            {user.id  && (
-              <div >
+            {user.id && (
+              <div>
                 <div className="form-group mb-2">
-                  <label >Username </label>
-                  <input placeholder={user.username} className="form-input" onChange={(e) => setUsername(e.target.value)}></input>
-                  <button type="button" className="form-btn" onClick={() => {
-                    UPDATE(tempUser);
-                    dispatch(updateUserAsync({
-                      tempUser: updatedUser,
-                      id: userId,
-                      token: token,
-                    })
-                    );
-                  }} >Update</button>
+                  <label>Username </label>
+                  <input
+                    placeholder={user.username}
+                    className="form-input"
+                    onChange={(e) => setUsername(e.target.value)}
+                  ></input>
+                  <button
+                    type="button"
+                    className="form-btn"
+                    onClick={() => {
+                      UPDATE(tempUser);
+                      dispatch(
+                        updateUserAsync({
+                          tempUser: updatedUser,
+                          id: userId,
+                          token: token,
+                        })
+                      );
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
 
                 <div className="form-group mb-2">
-                  <label >First name</label>
-                  <input placeholder={user.first_name} className="form-input" onChange={(e) => setFirst_name(e.target.value)}></input>
-                  <button type="button" className="form-btn" onClick={() => {
-                    UPDATE(tempUser);
-                    dispatch(updateUserAsync({
-                      tempUser: updatedUser,
-                      id: userId,
-                      token: token,
-                    })
-                    );
-                  }}>Update</button>
+                  <label>First name</label>
+                  <input
+                    placeholder={user.first_name}
+                    className="form-input"
+                    onChange={(e) => setFirst_name(e.target.value)}
+                  ></input>
+                  <button
+                    type="button"
+                    className="form-btn"
+                    onClick={() => {
+                      UPDATE(tempUser);
+                      dispatch(
+                        updateUserAsync({
+                          tempUser: updatedUser,
+                          id: userId,
+                          token: token,
+                        })
+                      );
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
 
                 <div className="form-group mb-2">
-                  <label >Last name</label>
-                  <input placeholder={user.last_name} onChange={(e) => setLast_name(e.target.value)} className="form-input"></input>
-                  <button className="form-btn" type="button" onClick={() => {
-                    UPDATE(tempUser);
-                    dispatch(
-                      updateUserAsync({
-                        tempUser: updatedUser,
-                        id: userId,
-                        token: token,
-                      })
-                    );
-                  }}>Update</button>
+                  <label>Last name</label>
+                  <input
+                    placeholder={user.last_name}
+                    onChange={(e) => setLast_name(e.target.value)}
+                    className="form-input"
+                  ></input>
+                  <button
+                    className="form-btn"
+                    type="button"
+                    onClick={() => {
+                      UPDATE(tempUser);
+                      dispatch(
+                        updateUserAsync({
+                          tempUser: updatedUser,
+                          id: userId,
+                          token: token,
+                        })
+                      );
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
 
                 <div className="form-group mb-2">
-                  <label >Email</label>
-                  <input placeholder={user.email} onChange={(e) => setEmail(e.target.value)} className="form-input"></input>
-                  <button className="form-btn" type="button" onClick={() => {
-                    UPDATE(tempUser);
-                    dispatch(
-                      updateUserAsync({
-                        tempUser: updatedUser,
-                        id: userId,
-                        token: token,
-                      })
-                    );
-                  }}>Update</button>
+                  <label>Email</label>
+                  <input
+                    placeholder={user.email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-input"
+                  ></input>
+                  <button
+                    className="form-btn"
+                    type="button"
+                    onClick={() => {
+                      UPDATE(tempUser);
+                      dispatch(
+                        updateUserAsync({
+                          tempUser: updatedUser,
+                          id: userId,
+                          token: token,
+                        })
+                      );
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
 
                 <div className="form-group mb-2">
-                  <label >Address</label>
-                  <input placeholder={adress} onChange={(e) => setAddress(e.target.value)} className="form-input"></input>
-                  <button className="form-btn" type="button" onClick={() => {
-                    UPDATE(tempUser);
-                    dispatch(
-                      updateUserAsync({
-                        tempUser: updatedUser,
-                        id: userId,
-                        token: token,
-                      })
-                    );
-                  }}>Update</button>
+                  <label>Address</label>
+                  <input
+                    placeholder={adress}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="form-input"
+                  ></input>
+                  <button
+                    className="form-btn"
+                    type="button"
+                    onClick={() => {
+                      UPDATE(tempUser);
+                      dispatch(
+                        updateUserAsync({
+                          tempUser: updatedUser,
+                          id: userId,
+                          token: token,
+                        })
+                      );
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
 
                 <div className="form-group mb-2">
-                  <label >Phone </label>
-                  <input placeholder={phone} onChange={(e) => setPhone(e.target.value)} className="form-input"></input>
-                  <button className="form-btn" type="button" onClick={() => {
-                    UPDATE(tempUser);
-                    dispatch(
-                      updateUserAsync({
-                        tempUser: updatedUser,
-                        id: userId,
-                        token: token,
-                      })
-                    );
-                  }}>Update</button>
+                  <label>Phone </label>
+                  <input
+                    placeholder={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="form-input"
+                  ></input>
+                  <button
+                    className="form-btn"
+                    type="button"
+                    onClick={() => {
+                      UPDATE(tempUser);
+                      dispatch(
+                        updateUserAsync({
+                          tempUser: updatedUser,
+                          id: userId,
+                          token: token,
+                        })
+                      );
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
-
-
-              </div>)}
-          </div>)}
+              </div>
+            )}
+          </div>
+        ))}
       </form>
-
-
     </div>
   );
 };

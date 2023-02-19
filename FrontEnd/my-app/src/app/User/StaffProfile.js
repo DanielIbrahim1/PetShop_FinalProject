@@ -37,10 +37,8 @@ const StaffProfile = () => {
   const [tempIs_Staff, setIsStaff] = useState(null);
   const [singleUser, SetSingleUser] = useState(null);
 
-
   const id = params.id;
   const updatedUser = {};
-
 
   const refresh = () => {
     dispatch(getUsersAsync({ id: 0, token: token }));
@@ -64,16 +62,13 @@ const StaffProfile = () => {
     phone: tempPhone,
     address: tempAddress,
     gender: tempGender,
-
   };
   useEffect(() => {
     refresh();
   }, [token]);
-  useEffect(() => {
-
-  }, [userList, profileList])
+  useEffect(() => {}, [userList, profileList]);
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
       <div>
         <table className="table-bordered">
           <thead>
@@ -84,17 +79,30 @@ const StaffProfile = () => {
           </thead>
           {userList.map((user) => (
             <tbody>
-              <tr>
-                <td><Link className="nav-link" to={`/staffMenu/users/${user.id}`}>
-                  {user.id}</Link></td>
+              <tr key={user.id}>
+                <td>
+                  <Link className="nav-link" to={`/staffMenu/users/${user.id}`}>
+                    {user.id}
+                  </Link>
+                </td>
                 <td>{user.username} </td>
-                <td>   {user.is_staff == true && <i> staff</i>}</td>
-                <td> <button className="delete-btn" type="button" onClick={() => {
-                  dispatch(deleteUserAsync({ id: user.id, token: token }));
-                  refresh();
-                }}>Del</button></td>
+                <td> {user.is_staff == true && <i> staff</i>}</td>
+                <td>
+                  {" "}
+                  <button
+                    className="delete-btn"
+                    type="button"
+                    onClick={() => {
+                      dispatch(deleteUserAsync({ id: user.id, token: token }));
+                      refresh();
+                    }}
+                  >
+                    Del
+                  </button>
+                </td>
               </tr>
-            </tbody>))}
+            </tbody>
+          ))}
         </table>
       </div>
 
@@ -105,39 +113,76 @@ const StaffProfile = () => {
             {userList.map((user) => (
               <div key={user.username}>
                 {user.id == id && (
-                  <ul >
+                  <ul>
                     <div className="form-group mb-2">
                       Username - &nbsp;&nbsp;
-                      <input placeholder={user.username}
-                        onChange={(e) => setUsername(e.target.value)}></input></div>
+                      <input
+                        placeholder={user.username}
+                        onChange={(e) => setUsername(e.target.value)}
+                      ></input>
+                    </div>
 
                     <div className="form-group mb-2">
                       First name - &nbsp;
-                      <input placeholder={user.first_name}
-                        onChange={(e) => setFirst_name(e.target.value)}></input></div>
+                      <input
+                        placeholder={user.first_name}
+                        onChange={(e) => setFirst_name(e.target.value)}
+                      ></input>
+                    </div>
 
                     <div className="form-group mb-2">
                       Last name - &nbsp;&nbsp;
-                      <input placeholder={user.last_name}
-                        onChange={(e) => setLast_name(e.target.value)}></input></div>
+                      <input
+                        placeholder={user.last_name}
+                        onChange={(e) => setLast_name(e.target.value)}
+                      ></input>
+                    </div>
 
                     <div className="form-group mb-2">
                       Email - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input placeholder={user.email}
-                        onChange={(e) => setEmail(e.target.value)} ></input></div>
+                      <input
+                        placeholder={user.email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      ></input>
+                    </div>
 
                     <div>
-                      {user.is_staff == "1" ?
+                      {user.is_staff == "1" ? (
                         <div>
-                          <input type="radio" name="staff" value="1" checked />staff
-                          &nbsp;
-                          <input type="radio" name="staff" onChange={(e) => setIsStaff(e.target.value)} value="0" /> not a staff
+                          <input
+                            type="radio"
+                            name="staff"
+                            value="1"
+                            defaultChecked
+                          />
+                          staff &nbsp;
+                          <input
+                            type="radio"
+                            name="staff"
+                            onChange={(e) => setIsStaff(e.target.value)}
+                            value="0"
+                          />{" "}
+                          not a staff
                         </div>
-                        : <div>
-                          <input type="radio" onChange={(e) => setIsStaff(e.target.value)} name="staff" value="1" />staff
-                          &nbsp;
-                          <input type="radio" name="staff" onChange={(e) => setIsStaff(e.target.value)} value="0" checked /> not a staff
-                        </div>}
+                      ) : (
+                        <div>
+                          <input
+                            type="radio"
+                            onChange={(e) => setIsStaff(e.target.value)}
+                            name="staff"
+                            value="1"
+                          />
+                          staff &nbsp;
+                          <input
+                            type="radio"
+                            name="staff"
+                            onChange={(e) => setIsStaff(e.target.value)}
+                            value="0"
+                            defaultChecked
+                          />{" "}
+                          not a staff
+                        </div>
+                      )}
                     </div>
                   </ul>
                 )}
@@ -153,10 +198,11 @@ const StaffProfile = () => {
                       <input
                         required
                         placeholder={profile.phone}
-                        onChange={(e) => setPhone(e.target.value)}></input>
+                        onChange={(e) => setPhone(e.target.value)}
+                      ></input>
                     </div>
                     <div className="form-group mb-2">
-                      Address  -&nbsp;
+                      Address -&nbsp;
                       <input
                         placeholder={profile.address}
                         onChange={(e) => setAddress(e.target.value)}
@@ -164,16 +210,19 @@ const StaffProfile = () => {
                     </div>
 
                     <div className="form-group mb-2">
-                      Gender  -&nbsp;&nbsp;
-                      <input placeholder={profile.gender}
-                        onChange={(e) => setGender(e.target.value)} ></input>
+                      Gender -&nbsp;&nbsp;
+                      <input
+                        placeholder={profile.gender}
+                        onChange={(e) => setGender(e.target.value)}
+                      ></input>
                     </div>
                   </ul>
                 )}
               </div>
             ))}
             <Link to="/staffMenu/users">
-              <button className="form-btn"
+              <button
+                className="form-btn"
                 type="button"
                 onClick={() => {
                   UPDATE(tempUser);
