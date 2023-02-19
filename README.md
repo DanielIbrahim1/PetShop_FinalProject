@@ -27,7 +27,11 @@ You can install virtualenv with
  ```
  pip install virtualenv
  ```
- That will create a new folder `myenv` in your project directory. Next activate it with this command on mac/linux:
+ next, create a new virtual enviroment folder `myenv` in your project directory. 
+```
+python -m virtualenv myenv 
+```
+ Next activate it with this command on mac/linux:
  ```
  myenv\Scripts\activate
 ```
