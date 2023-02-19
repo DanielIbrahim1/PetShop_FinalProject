@@ -59,10 +59,17 @@ const Product = () => {
         <div className="row">
           {!cat_id &&
             products.map((prod) => (
-              <div className="col-lg-3 col-12 col-md-6 col-sm-6 mb-5">
+              <div
+                key={prod._id}
+                className="col-lg-3 col-12 col-md-6 col-sm-6 mb-5"
+              >
                 <div className="product">
                   <div className="product-wrap">
-                    <Link key={prod._id} to={`/${prod._id}`} className="">
+                    <Link
+                      key={prod._id}
+                      to={`/${prod.category}/${prod._id}`}
+                      className=""
+                    >
                       <img
                         className="img-fluid w-100 mb-3 img-first"
                         src={`http://127.0.0.1:8000/static/images/${prod.photo}`}
@@ -128,7 +135,11 @@ const Product = () => {
                 >
                   <div className="product">
                     <div className="product-wrap">
-                      <Link key={prod._id} to={`/${prod._id}`} className="btn">
+                      <Link
+                        key={prod._id}
+                        to={`${prod.category}/${prod._id}`}
+                        className="btn"
+                      >
                         <img
                           className="img-fluid w-100 mb-3 img-first"
                           src={`http://127.0.0.1:8000/static/images/${prod.photo}`}

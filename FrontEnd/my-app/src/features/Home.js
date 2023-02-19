@@ -43,7 +43,7 @@ function Home() {
       </div>
 
       {!prod_id && <Product></Product>}
-
+      <Outlet></Outlet>
       <section className="features border-top">
         <div className="container">
           <div className="row">
@@ -86,9 +86,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <div>
-        <Outlet></Outlet>
-      </div>
+      <div></div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ const initialState = {
 export const getUsersAsync = createAsyncThunk("user/getUser", async (data) => {
   //   console.log("getting user");
   const response = await getUser(data.id, data.token);
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 });
 export const getProfileAsync = createAsyncThunk(
@@ -38,6 +38,7 @@ export const getProfileAsync = createAsyncThunk(
   async (data) => {
     // console.log("getting profile");
     const response = await getProfile(data.id, data.token);
+    // console.log(response.data);
     return response.data;
   }
 );
@@ -45,7 +46,7 @@ export const deleteUserAsync = createAsyncThunk(
   "user/deleteUser",
   async (newData) => {
     const response = await deleteUser(newData.id, newData.token);
-    console.log(newData.token);
+    // console.log(newData.token);
     return response.data;
   }
 );
@@ -83,7 +84,7 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getUsersAsync.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.userList = action.payload;
         // console.log(" got all users");
       })
@@ -93,12 +94,12 @@ export const userSlice = createSlice({
         // console.log(" got all profiles");
       })
       .addCase(deleteUserAsync.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.userList = state.userList.filter((x) => x.id !== action.payload);
       })
       .addCase(updateUserAsync.fulfilled, (state, action) => {
         state.status = "Done";
-        console.log(action.payload);
+        // console.log(action.payload);
       });
   },
 });

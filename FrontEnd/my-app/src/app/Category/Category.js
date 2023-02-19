@@ -7,7 +7,6 @@ const Category = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategoryList);
 
-
   useEffect(() => {
     dispatch(getCategoryAsync());
   }, []);

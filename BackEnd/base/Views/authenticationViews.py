@@ -94,13 +94,14 @@ def getUsers(request, id=0):
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getProfile(request, id=0):
-    user = User.objects.filter(id=id)
     if int(id) > 0:  # get one user
-        profile = Profile.objects.filter(user_id=user)
+        profile = Profile.objects.get(user_id=id)
+        serializer = userSerializer.ProfileSerializer(profile, many=False)
+        return Response(serializer.data)
     else:
         profile = Profile.objects.all()
-    serializer = userSerializer.ProfileSerializer(profile, many=True)
-    return Response(serializer.data)
+        serializer = userSerializer.ProfileSerializer(profile, many=True)
+        return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -123,7 +124,6 @@ def getOneUser(request, id):
     completeUser.append(tempUser)
 
     return Response(completeUser)
-
 
 
 ''' Done '''

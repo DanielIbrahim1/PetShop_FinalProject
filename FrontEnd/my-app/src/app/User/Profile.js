@@ -47,7 +47,6 @@ const Profile = () => {
   const id = params.id;
   useEffect(() => {
     dispatch(getUsersAsync({ id: id, token: token }));
-    console.log(userList);
   }, []);
 
   const updatedUser = {};

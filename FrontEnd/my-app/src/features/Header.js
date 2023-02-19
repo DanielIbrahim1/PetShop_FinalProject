@@ -136,7 +136,7 @@ const Header = () => {
                     aria-labelledby="navbarDropdown5"
                   >
                     <li>
-                      <Link to={{ pathname: "/login" }}>Login Page</Link>
+                      <Link to={{ pathname: "/login" }}>Login</Link>
                     </li>
                     {/* Login Page */}
 

@@ -40,10 +40,10 @@ const StaffProfile = () => {
   const id = params.id;
   const updatedUser = {};
 
-  const refresh = () => {
-    dispatch(getUsersAsync({ id: 0, token: token }));
-    dispatch(getProfileAsync({ id: 0, token: token }));
-  };
+  // const refresh = () => {
+  //   dispatch(getUsersAsync({ id: 0, token: token }));
+  //   dispatch(getProfileAsync({ id: 0, token: token }));
+  // };
 
   const UPDATE = (user) => {
     for (const [key, value] of Object.entries(user)) {
@@ -64,9 +64,10 @@ const StaffProfile = () => {
     gender: tempGender,
   };
   useEffect(() => {
-    refresh();
+    dispatch(getUsersAsync({ id: 0, token: token }));
+    dispatch(getProfileAsync({ id: 0, token: token }));
   }, [token]);
-  useEffect(() => {}, [userList, profileList]);
+  // useEffect(() => {}, [userList, profileList]);
   return (
     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
       <div>
@@ -78,7 +79,7 @@ const StaffProfile = () => {
             <th> </th>
           </thead>
           {userList.map((user) => (
-            <tbody>
+            <tbody key={user.id}>
               <tr key={user.id}>
                 <td>
                   <Link className="nav-link" to={`/staffMenu/users/${user.id}`}>
@@ -94,7 +95,7 @@ const StaffProfile = () => {
                     type="button"
                     onClick={() => {
                       dispatch(deleteUserAsync({ id: user.id, token: token }));
-                      refresh();
+                      // refresh();
                     }}
                   >
                     Del
@@ -233,7 +234,7 @@ const StaffProfile = () => {
                       token: token,
                     })
                   );
-                  refresh();
+                  // refresh();
                 }}
               >
                 update

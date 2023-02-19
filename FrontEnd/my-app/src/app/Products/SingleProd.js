@@ -12,7 +12,7 @@ const SingleProd = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProductList);
   const singleProduct = useSelector(selectSingleProd);
-    let params = useParams();
+  let params = useParams();
 
   let prod_id = params.prodID;
   let cat_id = params.catID;
@@ -28,25 +28,21 @@ const SingleProd = () => {
   }, [prod_id]);
 
   return (
-    
     <div>
-     { singleProduct.map((prod) => (
+      {singleProduct.map((prod) => (
         <ul>
           {<h2>Selected Product:</h2>}
           <h3>{prod.description}</h3>
-          {" id: " + prod._id}
           <br></br>
-          {" price: " + prod.price}
-          <br></br>
-          {" photo: " + prod.photo}
-          <br></br>
-          {" category: " + prod.category}
+          <h3>{" price: " + prod.price}</h3>
+          <img
+            style={{ width: "300px" }}
+            src={`http://127.0.0.1:8000/static/images/${prod.photo}`}
+          />
         </ul>
       ))}
     </div>
-    
   );
-  
 };
 
 export default SingleProd;

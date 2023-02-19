@@ -13,14 +13,14 @@ import Footer from "./features/Footer";
 function App() {
   const [user, setUser] = useState();
   const dispatch = useDispatch();
+  const loggedInUser = localStorage.getItem("user");
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       dispatch(doLoginAsync({ refresh: loggedInUser }));
       getCart();
     }
-  }, []);
+  }, [loggedInUser]);
   return (
     <div>
       <Header></Header>

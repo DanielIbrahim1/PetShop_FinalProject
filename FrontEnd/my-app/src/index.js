@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
@@ -23,19 +23,16 @@ import Home from "./features/Home";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
-
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<App />}>
-
           <Route path="/" element={<Home />}>
             <Route path=":catID" element={<Category />}>
-              
+              <Route path="/:catID/:prodID" element={<SingleProd />}></Route>
             </Route>
-            <Route path=":prodID" element={<SingleProd />}></Route>
           </Route>
 
           <Route path="/login" element={<Login />}></Route>
@@ -44,18 +41,20 @@ root.render(
 
           <Route path="/register" element={<Register />}></Route>
 
-          <Route path="/myorders/:id" element={<Order/>}>
+          <Route path="/myorders/:id" element={<Order />}></Route>
 
-          </Route>          
-         
           {/* <Route path="/orderdetails" element={<OrderDetails/>}/> */}
 
-
-          <Route path="/category" element={<Category />}>
+          {/* <Route path="/category" element={<Category />}>
             <Route path=":catID" element={<Product />}>
-              <Route path="/category/:catID/product/:prodID" element={<SingleProd />}> </Route>
+              <Route
+                path="/category/:catID/product/:prodID"
+                element={<SingleProd />}
+              >
+                {" "}
+              </Route>
             </Route>
-          </Route>
+          </Route> */}
 
           <Route path="/staffMenu" element={<StaffMenu />}>
             <Route path="/staffMenu/users" element={<StaffProfile />}>
